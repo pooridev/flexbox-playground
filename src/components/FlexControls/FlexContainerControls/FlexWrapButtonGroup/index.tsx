@@ -20,7 +20,7 @@ const FlexWrapButtonGroup = () => {
         <ToggleButton value="wrap" aria-label="Wrap">
           Wrap
         </ToggleButton>
-        <ToggleButton value="no-wrap" aria-label="Wrap">
+        <ToggleButton value="nowrap" aria-label="No Wrap">
           No Wrap
         </ToggleButton>
 

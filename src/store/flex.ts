@@ -6,6 +6,7 @@ const initialState: FlexStore["state"] = {
   flexContainerProps: {
     flexDirection: "row",
     justifyContent: "flex-start",
+    flexWrap: "nowrap",
     gap: 2,
   },
   selectedItemIndex: 1,
