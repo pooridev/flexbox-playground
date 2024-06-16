@@ -1,12 +1,12 @@
-import { useState } from "react";
-
-import "./App.css";
+import FlexContainer from "./components/FlexContainer";
+import FlexControls from "./components/FlexControls";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    
+    <main>
+      <FlexContainer />
+      <FlexControls />
+    </main>
   );
 }
 
