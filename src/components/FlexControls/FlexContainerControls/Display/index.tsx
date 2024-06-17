@@ -18,10 +18,10 @@ const Display = () => {
     <Stack direction="column" flex={1} gap={0.5}>
       <InputLabel>Display</InputLabel>
       <ToggleButtonGroup fullWidth value={display} exclusive onChange={handleDisplayChange} aria-label="Display">
-        <ToggleButton sx={{ textWrap: "nowrap" }} value="flex" aria-label="Flex">
+        <ToggleButton size="small" value="flex" aria-label="Flex">
           Flex
         </ToggleButton>
-        <ToggleButton sx={{ textWrap: "nowrap" }} value="inline-flex" aria-label="Inline Flex">
+        <ToggleButton size="small" value="inline-flex" aria-label="Inline Flex">
           Inline Flex
         </ToggleButton>
       </ToggleButtonGroup>
