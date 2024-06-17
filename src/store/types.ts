@@ -32,5 +32,6 @@ export interface FlexStore {
     removeFlexItem: (flexItemId: FlexItemId) => void;
     addFlexItem: () => void;
     setSelectedFlexItemId: (flexItemId: FlexItemId) => void;
+    resetFlexProps: () => void;
   };
 }

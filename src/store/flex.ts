@@ -107,5 +107,12 @@ export const useFlexStore = create<FlexStore>((set) => ({
         },
       }));
     },
+
+    resetFlexProps() {
+      set((store) => ({
+        ...store,
+        state: initialState,
+      }));
+    },
   },
 }));
