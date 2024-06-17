@@ -7,8 +7,9 @@ export const Wrapper = styled(Box)`
   width: 100%;
 
   @media (min-width: 48em) {
-    width: 25vw;
+    width: 36vw;
+    max-width: 20rem;
     bottom: unset;
-    right: 10px;
+    right: 1rem;
   }
 `;

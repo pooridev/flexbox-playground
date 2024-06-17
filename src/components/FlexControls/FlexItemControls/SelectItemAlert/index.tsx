@@ -1,9 +1,10 @@
-import { Button, Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography, useMediaQuery } from "@mui/material";
 import { useFlexStore } from "../../../../store/flex";
 import { getRandomArrayElement } from "./utils";
 
 const SelectItemAlert = () => {
   const selectedItemId = useFlexStore(({ state }) => state.selectedItemId);
+  const isMobile = useMediaQuery("(max-width: 48em)");
 
   const flexItemIds = useFlexStore(({ state }) => Object.keys(state.flexItemsProps));
   const setSelectedFlexItemId = useFlexStore(({ actions }) => actions.setSelectedFlexItemId);
@@ -31,7 +32,16 @@ const SelectItemAlert = () => {
         backdropFilter: "blur(1.5px)",
       }}
     >
-      <Typography fontWeight="bold" boxShadow={1}>
+      <Typography
+        fontWeight="bold"
+        sx={{
+          padding: 0.5,
+          borderRadius: 1,
+          backgroundColor: (theme) => theme.palette.action.focus,
+          fontSize: isMobile ? "1.2rem" : ".8rem",
+        }}
+        boxShadow={2}
+      >
         Please select a flex item to customize it!
       </Typography>
       <Button

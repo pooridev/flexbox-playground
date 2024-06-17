@@ -11,4 +11,8 @@ export const Wrapper = styled(Stack)`
   overflow-x: auto;
   overflow: visible;
   transform: translate(-50%, 10%);
+
+  @media (min-width: 48em) {
+    transform: translate(-70%, 10%);
+  }
 `;

@@ -10,7 +10,7 @@ const AddFlexItemButton = () => {
         onClick={addFlexItem}
         size="large"
         variant="contained"
-        color="success"
+        color="warning"
         sx={{
           boxShadow: 2,
           p: "5px",

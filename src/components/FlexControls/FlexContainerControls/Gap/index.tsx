@@ -1,11 +1,12 @@
 import { GridOn } from "@mui/icons-material";
-import { Grid, InputLabel, Slider, Stack } from "@mui/material";
+import { Grid, InputLabel, Slider, Stack, useMediaQuery } from "@mui/material";
 
 import { useFlexStore } from "../../../../store/flex";
 
 const Gap = () => {
   const gap = useFlexStore(({ state }) => state.flexContainerProps.gap);
   const { setFlexContainerProps } = useFlexStore(({ actions }) => actions);
+  const isMobile = useMediaQuery("(max-width: 48em)");
 
   const handleSliderChange = (_: Event, _gap: number | number[]) => {
     setFlexContainerProps({
@@ -14,7 +15,7 @@ const Gap = () => {
   };
 
   return (
-    <Stack gap={0.5} maxWidth="48%">
+    <Stack gap={0.5} maxWidth={isMobile ? "48%" : "100%"}>
       <InputLabel>Gap</InputLabel>
 
       <Grid container spacing={2} alignItems="center">

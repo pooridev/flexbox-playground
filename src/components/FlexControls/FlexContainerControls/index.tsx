@@ -12,7 +12,7 @@ const FlexContainerControls = () => {
   const isMobile = useMediaQuery("(max-width: 48em)");
 
   return (
-    <Stack p={2} pb={3} pt={4} direction="column" gap={2} height={isMobile ? "20rem" : "100%"} overflow="auto">
+    <Stack p={2} pb={3} pt={4} direction="column" gap={2} overflow="auto" height={isMobile ? "20rem" : "100%"}>
       <Stack direction="row" gap={2}>
         <FlexDirection />
         <JustifyContent />
