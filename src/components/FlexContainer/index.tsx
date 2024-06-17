@@ -22,7 +22,7 @@ const FlexContainer = () => {
       justifyContent={flexContainerProps.justifyContent}
       display={flexContainerProps.display}
       boxShadow={1}
-      height="40vh"
+      height="40dvh"
       maxHeight={320}
       minWidth={300}
       width="40%"

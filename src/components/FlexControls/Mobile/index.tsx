@@ -14,7 +14,7 @@ const MobileControls = () => {
   };
 
   return (
-    <Stack height="37vh">
+    <Stack height="37dvh">
       <Tabs onChange={handleTabChange} value={activeTab} textColor="inherit" variant="fullWidth">
         <Tab label="Container props" value={CONTROL_TABS.CONTAINER} />
         <Tab label="Item props" value={CONTROL_TABS.ITEM} />
