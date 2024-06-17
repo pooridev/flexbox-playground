@@ -12,7 +12,7 @@ const FlexContainer = () => {
   };
 
   return (
-    <Wrapper {...flexContainerProps} boxShadow="md" height={350} minWidth={300} width="40%">
+    <Wrapper {...flexContainerProps} boxShadow={1} height="40vh" maxHeight={320} minWidth={300} width="40%">
       {Array(flexItemCount)
         .fill(undefined)
         .map((_, index) => (
