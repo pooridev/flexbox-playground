@@ -16,8 +16,8 @@ const Display = () => {
 
   return (
     <Stack direction="column" flex={1} gap={0.5}>
-      <InputLabel>Flex Wrap</InputLabel>
-      <ToggleButtonGroup fullWidth value={display} exclusive onChange={handleDisplayChange} aria-label="Flex wrap">
+      <InputLabel>Display</InputLabel>
+      <ToggleButtonGroup fullWidth value={display} exclusive onChange={handleDisplayChange} aria-label="Display">
         <ToggleButton sx={{ textWrap: "nowrap" }} value="flex" aria-label="Flex">
           Flex
         </ToggleButton>
