@@ -2,7 +2,7 @@ import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@m
 import { useFlexStore } from "../../../../store/flex";
 import { CSSProperties } from "react";
 
-const JustifyContentSelect = () => {
+const JustifyContent = () => {
   const { justifyContent } = useFlexStore(({ state }) => state.flexContainerProps);
   const { setFlexContainerProps } = useFlexStore(({ actions }) => actions);
 
@@ -34,4 +34,4 @@ const JustifyContentSelect = () => {
   );
 };
 
-export default JustifyContentSelect;
+export default JustifyContent;

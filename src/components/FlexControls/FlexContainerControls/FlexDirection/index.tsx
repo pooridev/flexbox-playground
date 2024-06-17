@@ -2,7 +2,7 @@ import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@m
 import { useFlexStore } from "../../../../store/flex";
 import { CSSProperties } from "react";
 
-const FlexDirectionSelect = () => {
+const FlexDirection = () => {
   const { flexDirection } = useFlexStore(({ state }) => state.flexContainerProps);
   const { setFlexContainerProps } = useFlexStore(({ actions }) => actions);
 
@@ -32,4 +32,4 @@ const FlexDirectionSelect = () => {
   );
 };
 
-export default FlexDirectionSelect;
+export default FlexDirection;

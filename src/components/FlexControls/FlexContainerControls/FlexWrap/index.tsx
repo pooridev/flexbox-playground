@@ -3,7 +3,7 @@ import { InputLabel, Stack, ToggleButton, ToggleButtonGroup } from "@mui/materia
 import { useFlexStore } from "../../../../store/flex";
 import { CSSProperties, MouseEvent } from "react";
 
-const FlexWrapButtonGroup = () => {
+const FlexWrap = () => {
   const { flexWrap } = useFlexStore(({ state }) => state.flexContainerProps);
   const { setFlexContainerProps } = useFlexStore(({ actions }) => actions);
 
@@ -32,4 +32,4 @@ const FlexWrapButtonGroup = () => {
   );
 };
 
-export default FlexWrapButtonGroup;
+export default FlexWrap;
