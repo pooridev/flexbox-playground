@@ -5,13 +5,7 @@ import { useFlexStore } from "../../../store/flex";
 const AddFlexItemButton = () => {
   const addFlexItem = useFlexStore(({ actions }) => actions.addFlexItem);
   return (
-    <Tooltip
-      PopperProps={{
-        color: "success",
-      }}
-      placement="top"
-      title="Add flex item"
-    >
+    <Tooltip placement="top" title="Add flex item">
       <Button
         onClick={addFlexItem}
         size="large"
