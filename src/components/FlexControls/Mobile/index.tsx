@@ -40,7 +40,7 @@ interface TabPanelProps {
 const TabPanel = ({ activeTab, index, children }: TabPanelProps) => {
   if (activeTab != index) return null;
 
-  return <Box>{children}</Box>;
+  return children;
 };
 
 export default MobileControls;
