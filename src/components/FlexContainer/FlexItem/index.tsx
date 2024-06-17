@@ -2,32 +2,38 @@ import { IconButton } from "@mui/material";
 import { useFlexStore } from "../../../store/flex";
 import { Wrapper } from "./styled";
 import { RemoveCircle } from "@mui/icons-material";
+import { FlexItemId, FlexItemProps } from "../../../store/types";
 
 interface Props {
-  itemIndex: number;
-  handleSelectItem: () => void;
+  label: number;
+  handleSelectItem: (itemId: FlexItemId) => void;
   isSelected: boolean;
+  itemId: FlexItemId;
+  flexProps: FlexItemProps;
 }
 
-const FlexItem = ({ itemIndex, handleSelectItem, isSelected }: Props) => {
-  const { flexItemsProps, selectedItemIndex } = useFlexStore(({ state }) => state);
-  const { removeFlexItem } = useFlexStore(({ actions }) => actions);
-
-  const currentFlexItemProps = flexItemsProps[selectedItemIndex];
+const FlexItem = ({ label, handleSelectItem, isSelected, flexProps, itemId }: Props) => {
+  const removeFlexItem = useFlexStore(({ actions }) => actions.removeFlexItem);
 
   return (
     <Wrapper
       sx={{ bgcolor: isSelected ? "#4c59ca" : "#45484e" }}
-      onClick={handleSelectItem}
-      {...currentFlexItemProps}
+      onClick={() => handleSelectItem(itemId)}
+      {...flexProps}
       justifyContent="center"
       alignItems="center"
     >
-      <IconButton onClick={removeFlexItem} className="removeFlexItemButton">
+      <IconButton
+        onClick={(e) => {
+          e.stopPropagation();
+          removeFlexItem(itemId);
+        }}
+        className="removeFlexItemButton"
+      >
         <RemoveCircle />
       </IconButton>
 
-      {itemIndex}
+      {label}
     </Wrapper>
   );
 };

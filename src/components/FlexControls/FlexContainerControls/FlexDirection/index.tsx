@@ -3,7 +3,7 @@ import { useFlexStore } from "../../../../store/flex";
 import { CSSProperties } from "react";
 
 const FlexDirection = () => {
-  const { flexDirection } = useFlexStore(({ state }) => state.flexContainerProps);
+  const flexDirection = useFlexStore(({ state }) => state.flexContainerProps.flexDirection);
   const { setFlexContainerProps } = useFlexStore(({ actions }) => actions);
 
   const handleChangeFlexDirection = ({ target }: SelectChangeEvent) => {
@@ -20,9 +20,10 @@ const FlexDirection = () => {
         labelId="Flex Direction"
         id="flex-direction"
         value={flexDirection}
-        label="Age"
+        label="Flex Direction"
         onChange={handleChangeFlexDirection}
       >
+        <MenuItem value="initial">Initial</MenuItem>
         <MenuItem value="column">Column</MenuItem>
         <MenuItem value="column-reverse">Column Reverse</MenuItem>
         <MenuItem value="row">Row</MenuItem>

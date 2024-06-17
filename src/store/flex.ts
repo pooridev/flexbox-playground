@@ -1,25 +1,26 @@
 import { create } from "zustand";
 import { FlexStore } from "./types";
+import { excludeObjectProps, generateId } from "./utils";
+
+const INITIAL_FLEX_ITEM_PROPS = {
+  width: 100,
+};
 
 const initialState: FlexStore["state"] = {
-  flexItemCount: 3,
   flexContainerProps: {
+    display: "flex",
     flexDirection: "row",
     justifyContent: "flex-start",
     flexWrap: "nowrap",
-    gap: 2,
+    alignItems: "initial",
+    alignContent: "initial",
+    gap: 10,
   },
-  selectedItemIndex: 1,
+  selectedItemId: null,
   flexItemsProps: {
-    1: {
-      width: 100,
-    },
-    2: {
-      width: 100,
-    },
-    3: {
-      width: 100,
-    },
+    [generateId()]: INITIAL_FLEX_ITEM_PROPS,
+    [generateId()]: INITIAL_FLEX_ITEM_PROPS,
+    [generateId()]: INITIAL_FLEX_ITEM_PROPS,
   },
 };
 
@@ -38,46 +39,70 @@ export const useFlexStore = create<FlexStore>((set) => ({
         },
       }));
     },
-    setFlexItemProps(itemProps) {
+
+    setFlexItemProps(flexItemProps) {
       set((store) => ({
         ...store,
         state: {
           ...store.state,
           flexItemsProps: {
             ...store.state.flexItemsProps,
-            [store.state.selectedItemIndex]: {
-              ...store.state.flexItemsProps[store.state.selectedItemIndex],
-              ...itemProps,
+            [store.state.selectedItemId!]: {
+              ...store.state.flexItemsProps[store.state.selectedItemId!],
+              ...flexItemProps,
             },
           },
         },
       }));
     },
-    removeFlexItem() {
-      set((store) => ({
-        ...store,
-        state: {
-          ...store.state,
-          flexItemCount: store.state.flexItemCount > 1 ? store.state.flexItemCount - 1 : 1,
-        },
-      }));
-    },
-    addFlexItem() {
-      set((store) => ({
-        ...store,
-        state: {
-          ...store.state,
-          flexItemCount: store.state.flexItemCount > 5 ? store.state.flexItemCount : store.state.flexItemCount + 1,
-        },
-      }));
+
+    removeFlexItem(flexItemId) {
+      set((store) => {
+        const currentFlexItemsProps = store.state.flexItemsProps;
+        const onlyOneFlexItemLeft = Object.keys(currentFlexItemsProps).length == 1;
+
+        // Do not let user to remove the last flex item
+        if (onlyOneFlexItemLeft) return store;
+
+        const newFlexItemsProps = excludeObjectProps(currentFlexItemsProps, [flexItemId]);
+
+        return {
+          ...store,
+          state: {
+            ...store.state,
+            selectedItemId: flexItemId == store.state.selectedItemId ? null : store.state.selectedItemId,
+            flexItemsProps: newFlexItemsProps,
+          },
+        };
+      });
     },
 
-    setSelectedItemIndex(itemIndex: number) {
+    addFlexItem() {
+      set((store) => {
+        const haveFiveFlexItems = Object.keys(store.state.flexItemsProps).length == 5;
+
+        // Do not let user to add more than 5 flex items
+        if (haveFiveFlexItems) return store;
+
+        return {
+          ...store,
+          state: {
+            ...store.state,
+            flexItemsProps: {
+              ...store.state.flexItemsProps,
+              [generateId()]: INITIAL_FLEX_ITEM_PROPS,
+            },
+          },
+        };
+      });
+    },
+
+    setSelectedFlexItemId(flexItemId) {
       set((store) => ({
         ...store,
         state: {
           ...store.state,
-          selectedItemIndex: itemIndex,
+          selectedItemId: flexItemId,
         },
       }));
     },

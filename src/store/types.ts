@@ -2,6 +2,7 @@ import { CSSProperties } from "react";
 
 export interface FlexContainerProps {
   gap?: number;
+  display?: "inline-flex" | "flex";
   flexDirection?: CSSProperties["flexDirection"];
   flexWrap?: CSSProperties["flexWrap"];
   justifyContent?: CSSProperties["justifyContent"];
@@ -19,21 +20,20 @@ export interface FlexItemProps {
   height?: CSSProperties["height"];
 }
 
-type ItemIndex = number;
+export type FlexItemId = number;
 
 export interface FlexStore {
   state: {
-    flexItemCount: number;
     flexContainerProps: FlexContainerProps;
-    flexItemsProps: Record<ItemIndex, FlexItemProps>;
-    selectedItemIndex: ItemIndex;
+    flexItemsProps: Record<FlexItemId, FlexItemProps>;
+    selectedItemId: FlexItemId | null;
   };
 
   actions: {
     setFlexContainerProps: (containerProps: FlexContainerProps) => void;
-    setFlexItemProps: (itemProps: FlexItemProps) => void;
-    removeFlexItem: () => void;
+    setFlexItemProps: (flexItemProps: FlexItemProps) => void;
+    removeFlexItem: (flexItemId: FlexItemId) => void;
     addFlexItem: () => void;
-    setSelectedItemIndex: (itemIndex: ItemIndex) => void;
+    setSelectedFlexItemId: (flexItemId: FlexItemId) => void;
   };
 }

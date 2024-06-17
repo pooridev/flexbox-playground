@@ -3,7 +3,7 @@ import { useFlexStore } from "../../../../store/flex";
 import { CSSProperties } from "react";
 
 const JustifyContent = () => {
-  const { justifyContent } = useFlexStore(({ state }) => state.flexContainerProps);
+  const justifyContent = useFlexStore(({ state }) => state.flexContainerProps.justifyContent);
   const { setFlexContainerProps } = useFlexStore(({ actions }) => actions);
 
   const handleChangeJustifyContent = ({ target }: SelectChangeEvent) => {
@@ -20,9 +20,10 @@ const JustifyContent = () => {
         labelId="Justify Content"
         id="justify-content"
         value={justifyContent}
-        label="Age"
+        label="Justify Content"
         onChange={handleChangeJustifyContent}
       >
+        <MenuItem value="initial">Initial</MenuItem>
         <MenuItem value="flex-start">Flex Start</MenuItem>
         <MenuItem value="flex-end">Flex End</MenuItem>
         <MenuItem value="space-between">Space Between</MenuItem>

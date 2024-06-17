@@ -9,5 +9,6 @@ export const Wrapper = styled(Stack)`
   top: 2rem;
   left: 50%;
   overflow-x: auto;
+  overflow: visible;
   transform: translate(-50%, 10%);
 `;

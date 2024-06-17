@@ -4,27 +4,29 @@ import { useFlexStore } from "../../../../store/flex";
 import { CSSProperties, MouseEvent } from "react";
 
 const FlexWrap = () => {
-  const { flexWrap } = useFlexStore(({ state }) => state.flexContainerProps);
+  const flexWrap = useFlexStore(({ state }) => state.flexContainerProps.flexWrap);
   const { setFlexContainerProps } = useFlexStore(({ actions }) => actions);
 
-  const handleFlexWrapChange = (_: MouseEvent, newFlexWrap: CSSProperties["flexWrap"]) => {
-    setFlexContainerProps({
-      flexWrap: newFlexWrap,
-    });
+  const handleFlexWrapChange = (_: MouseEvent, _flexWrap: CSSProperties["flexWrap"] | undefined) => {
+    if (_flexWrap) {
+      setFlexContainerProps({
+        flexWrap: _flexWrap,
+      });
+    }
   };
 
   return (
-    <Stack direction="column" gap={0.5}>
+    <Stack flex={1} direction="column" gap={0.5}>
       <InputLabel>Flex Wrap</InputLabel>
-      <ToggleButtonGroup value={flexWrap} exclusive onChange={handleFlexWrapChange} aria-label="Flex wrap">
-        <ToggleButton value="wrap" aria-label="Wrap">
+      <ToggleButtonGroup fullWidth value={flexWrap} exclusive onChange={handleFlexWrapChange} aria-label="Flex wrap">
+        <ToggleButton sx={{ textWrap: "nowrap" }} value="wrap" aria-label="Wrap">
           Wrap
         </ToggleButton>
-        <ToggleButton value="nowrap" aria-label="No Wrap">
+        <ToggleButton sx={{ textWrap: "nowrap" }} value="nowrap" aria-label="No Wrap">
           No Wrap
         </ToggleButton>
 
-        <ToggleButton value="wrap-reverse" aria-label="Wrap">
+        <ToggleButton sx={{ textWrap: "nowrap" }} value="wrap-reverse" aria-label="Wrap">
           Wrap Reverse
         </ToggleButton>
       </ToggleButtonGroup>
