@@ -3,7 +3,8 @@ import { FlexStore } from "./types";
 import { excludeObjectProps, generateId } from "./utils";
 
 const INITIAL_FLEX_ITEM_PROPS = {
-  width: 100,
+  flexGrow: 0,
+  flexShrink: 0,
 };
 
 const initialState: FlexStore["state"] = {

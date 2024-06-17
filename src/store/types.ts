@@ -11,13 +11,10 @@ export interface FlexContainerProps {
 }
 
 export interface FlexItemProps {
-  flexGrow?: CSSProperties["flexGrow"];
-  flexShrink?: CSSProperties["flexShrink"];
-  flexBasis?: CSSProperties["flexBasis"];
+  flexGrow?: number;
+  flexShrink?: number;
   alignSelf?: CSSProperties["alignSelf"];
-  order?: CSSProperties["order"];
-  width?: CSSProperties["width"];
-  height?: CSSProperties["height"];
+  order?: number;
 }
 
 export type FlexItemId = number;
