@@ -14,11 +14,11 @@ const theme = createTheme({
   },
   components: {
     MuiCssBaseline: {
-      styleOverrides: `
-         body {
-            background: rgba(31, 32, 35);       
-          }
-      `,
+      styleOverrides: {
+        body: {
+          background: "rgba(31, 32, 35);",
+        },
+      },
     },
   },
 });
