@@ -3,7 +3,7 @@ import FlexContainerControls from "../FlexContainerControls";
 import FlexItemControls from "../FlexItemControls";
 import { ReactNode, SyntheticEvent, useState } from "react";
 import { CONTROL_TABS } from "./constants";
-import { Box, Stack, Tab } from "@mui/material";
+import { Stack, Tab } from "@mui/material";
 import { TabPanelIndex } from "./types";
 
 const MobileControls = () => {
