@@ -31,8 +31,17 @@ const SelectItemAlert = () => {
         backdropFilter: "blur(1.5px)",
       }}
     >
-      <Typography>Please select a flex item to customize it!</Typography>
-      <Button variant="contained" color="primary" onClick={selectRandomFlexItem}>
+      <Typography fontWeight="bold" boxShadow={1}>
+        Please select a flex item to customize it!
+      </Typography>
+      <Button
+        sx={{
+          textTransform: "unset",
+        }}
+        variant="contained"
+        color="warning"
+        onClick={selectRandomFlexItem}
+      >
         (Or) Select one randomly
       </Button>
     </Stack>
