@@ -6,7 +6,7 @@ import { excludeObjectProps, generateId } from "./utils";
 
 const INITIAL_FLEX_ITEM_PROPS = {
   flexGrow: 0,
-  flexShrink: 0,
+  flexShrink: 0
 };
 
 const initialState: FlexStore["state"] = {
@@ -17,14 +17,14 @@ const initialState: FlexStore["state"] = {
     flexWrap: "nowrap",
     alignItems: "initial",
     alignContent: "initial",
-    gap: 10,
+    gap: 10
   },
   selectedItemId: null,
   flexItemsProps: {
     [generateId()]: INITIAL_FLEX_ITEM_PROPS,
     [generateId()]: INITIAL_FLEX_ITEM_PROPS,
-    [generateId()]: INITIAL_FLEX_ITEM_PROPS,
-  },
+    [generateId()]: INITIAL_FLEX_ITEM_PROPS
+  }
 };
 
 export const useFlexStore = create(
@@ -39,9 +39,9 @@ export const useFlexStore = create(
               ...store.state,
               flexContainerProps: {
                 ...store.state.flexContainerProps,
-                ...containerProps,
-              },
-            },
+                ...containerProps
+              }
+            }
           }));
         },
 
@@ -54,10 +54,10 @@ export const useFlexStore = create(
                 ...store.state.flexItemsProps,
                 [store.state.selectedItemId!]: {
                   ...store.state.flexItemsProps[store.state.selectedItemId!],
-                  ...flexItemProps,
-                },
-              },
-            },
+                  ...flexItemProps
+                }
+              }
+            }
           }));
         },
 
@@ -76,8 +76,8 @@ export const useFlexStore = create(
               state: {
                 ...store.state,
                 selectedItemId: flexItemId == store.state.selectedItemId ? null : store.state.selectedItemId,
-                flexItemsProps: newFlexItemsProps,
-              },
+                flexItemsProps: newFlexItemsProps
+              }
             };
           });
         },
@@ -95,9 +95,9 @@ export const useFlexStore = create(
                 ...store.state,
                 flexItemsProps: {
                   ...store.state.flexItemsProps,
-                  [generateId()]: INITIAL_FLEX_ITEM_PROPS,
-                },
-              },
+                  [generateId()]: INITIAL_FLEX_ITEM_PROPS
+                }
+              }
             };
           });
         },
@@ -107,22 +107,22 @@ export const useFlexStore = create(
             ...store,
             state: {
               ...store.state,
-              selectedItemId: flexItemId,
-            },
+              selectedItemId: flexItemId
+            }
           }));
         },
 
         resetFlexProps() {
           set((store) => ({
             ...store,
-            state: initialState,
+            state: initialState
           }));
-        },
-      },
+        }
+      }
     }),
     {
       name: "flex-store",
-      partialize: (store) => excludeObjectProps(store, ["actions"]) as FlexStore,
+      partialize: (store) => excludeObjectProps(store, ["actions"]) as FlexStore
     }
   )
 );
